@@ -49,7 +49,7 @@ jobs:
       - name: Sync java sdk    
         run: git clone https://github.com/yunify/qingcloud-sdk-java.git
       - name: snips java sdk api specs  
-        run: snips -f ./qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t ./qingcloud-sdk-java/tmpl -o ./qingcloud-sdk-java/src/main/java/com/qingcloud/sdk/service/
+        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t ./qingcloud-sdk-java/tmpl -o ./qingcloud-sdk-java/src/main/java/com/qingcloud/sdk/service/
       - name: push java sdk api specs
         run: echo push 2 java
         
