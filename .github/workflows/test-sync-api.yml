@@ -46,6 +46,8 @@ jobs:
         run: tar -xvf snips-v0.3.6-linux_amd64.tar.gz
       - name: put the executable file snips into a directory that in the $PATH environment variable
         run: cp snips /usr/local/bin/snips
+      - name: git account identity
+        run:   git config --global user.email "nicholsqin@yunify.com" && git config --global user.name "cong.qin"
       - name: Sync java sdk    
         run: git clone https://github.com/yunify/qingcloud-sdk-java.git
       - name: snips java sdk api specs  
