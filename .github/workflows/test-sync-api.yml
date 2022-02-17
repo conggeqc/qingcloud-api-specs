@@ -47,15 +47,25 @@ jobs:
       - name: put the executable file snips into a directory that in the $PATH environment variable
         run: cp snips /usr/local/bin/snips
       - name: git account identity
-        run:   git config --global user.email "nicholsqin@yunify.com" && git config --global user.name "cong.qin"
+        run:   git config --global user.email "cps-robot@yunify.com" && git config --global user.name "qingcloud-cps-robot"
       - name: Sync java sdk    
         run: git clone https://github.com/yunify/qingcloud-sdk-java.git
       - name: snips java sdk api specs  
         run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t ./qingcloud-sdk-java/tmpl -o ./qingcloud-sdk-java/src/main/java/com/qingcloud/sdk/service/
-      - name: push java sdk api specs
-        run: cd ./qingcloud-sdk-java && git branch api-specs-sync &&  git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
- 
-
+      #- name: push java sdk api specs
+      #  run: cd ./qingcloud-sdk-java && git branch api-specs-sync &&  git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
+      - name:  Sync go sdk
+        run: echo Sync go sdk
+      - name: snips go sdk api specs
+        run: echo snips go sdk api specs
+      - name: push go sdk api specs
+        run: echo push go sdk api specs
+      - name:  Sync ruby sdk
+        run: echo Sync ruby sdk
+      - name: snips ruby sdk api specs
+        run: echo snips ruby sdk api specs
+      - name: push ruby sdk api specs
+        run: echo push ruby sdk api specs  
            
       
         
