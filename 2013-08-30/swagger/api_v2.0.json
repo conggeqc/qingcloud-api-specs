@@ -21,6 +21,9 @@
   "host": "api.qingcloud.com",
   "basePath": "/iaas",
   "paths": {
+    "TestApps": {
+      "$ref": "./test.json#/TestApps"
+    },
     "/DescribeProjects": {
       "$ref": "./project.json#/DescribeProjects"
     },
