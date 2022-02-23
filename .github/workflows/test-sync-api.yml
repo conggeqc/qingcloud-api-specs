@@ -57,7 +57,7 @@ jobs:
         run: |
           git checkout ${GITHUB_REF:11} --
           git remote rm origin
-          git remote add origin "https://x-access-token:$GH_TOKEN@github.com/yunify/qingcloud-api-specs.git"
+          git remote add origin "https://x-access-token:$GH_TOKEN@github.com/yunify/qingcloud-sdk-java.git"
           git fetch origin --tags
           git branch --set-upstream-to origin/${GITHUB_REF:11} ${GITHUB_REF:11}
       - name: prepare branch
