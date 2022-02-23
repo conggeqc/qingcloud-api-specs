@@ -59,6 +59,9 @@ jobs:
 
       - name: switch repo git remote
         run:  git remote add  origin https://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@github.com/yunify/qingcloud-sdk-java.git  
+     
+      - name: cat  java sdk git config
+        run: cd .git && cat config   
 
       - name: branch to commit && push
         run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
