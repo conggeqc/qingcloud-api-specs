@@ -1,18 +1,18 @@
 {
-  "TestApps": {
+  "UploadUserDataAttachment": {
     "parameters": [
       {
         "$ref": "#/parameters/zone"
       }
     ],
-    "get": {
+    "post": {
       "tags": [
-        "App"
+        "User Data"
       ],
-      "operationId": "TestApps",
-      "summary": "TestApps",
+      "operationId": "UploadUserDataAttachment",
+      "summary": "UploadUserDataAttachment",
       "externalDocs": {
-        "url": "https://docs.qingcloud.com/api/bot/Test_apps.html"
+        "url": "https://docs.qingcloud.com/api/userdata/upload_userdata_attachment.html"
       },
       "parameters": [
         {
@@ -21,56 +21,16 @@
           "schema": {
             "type": "object",
             "properties": {
-              "app": {
+              "attachment_content": {
                 "type": "string"
               },
-              "app_name": {
+              "attachment_name": {
                 "type": "string"
-              },
-              "category":{
-                "type":"string"
-              },
-              "app_type":{
-                "type":"array",
-                "items":{
-                  "type":"string"
-                }
-              },
-              "zones":{
-                "type":"array",
-                "items":{
-                  "type":"string"
-                }
-              },
-              "tags":{
-                "type":"array",
-                "items":{
-                  "type":"string"
-                }
-              },
-              "search_word":{
-                "type":"string"
-              },
-              "status":{
-                "type":"array",
-                "items":{
-                  "type":"string"
-                }
-              },
-              "verbose":{
-                "type":"integer",
-                "enum":[
-                  1,
-                  0
-                ]
-              },
-              "offset": {
-                "type": "integer"
-              },
-              "limit": {
-                "type": "integer"
               }
-            }
+            },
+            "required": [
+              "attachment_content"
+            ]
           }
         }
       ],
@@ -86,14 +46,8 @@
               "ret_code": {
                 "type": "integer"
               },
-              "app_set": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/app"
-                }
-              },
-              "total_count": {
-                "type": "integer"
+              "attachment_id": {
+                "type": "string"
               }
             }
           }
