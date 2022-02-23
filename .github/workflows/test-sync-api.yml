@@ -60,6 +60,9 @@ jobs:
           git remote add origin "https://x-access-token:$GH_TOKEN@github.com/yunify/qingcloud-api-specs.git"
           git fetch origin --tags
           git branch --set-upstream-to origin/${GITHUB_REF:11} ${GITHUB_REF:11}
+      - name: prepare branch
+        run: git branch api-specs-sync &&  git commit -m "from project qingcloud-api-specs ci" && git push  -f origin api-specs-sync
+          
           
       
       - name: Make changes to pull request
