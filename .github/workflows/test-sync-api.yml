@@ -52,7 +52,7 @@ jobs:
         run: cd .git && cat config   
         
       - name: add java origin
-        run: git remote rm origin && git remote set-url origin https://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@github.com/yunify/qingcloud-sdk-java.git 
+        run: git rm  remote origin && git remote set-url origin https://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@github.com/yunify/qingcloud-sdk-java.git 
 
       - name: push java sdk
         run: cd .git && cat config   
