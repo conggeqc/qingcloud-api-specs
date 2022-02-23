@@ -62,6 +62,9 @@ jobs:
      
       - name: cat  java sdk git config
         run: cd .git && cat config   
+        
+      - name: pwd
+        run: pwd
 
       - name: branch to commit && push
         run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
