@@ -49,7 +49,7 @@ jobs:
         run: cd ./qingcloud-sdk-java && touch date.txt 
     
       - name: push java sdk
-        run: cd .git && vim config   
+        run: cd .git && cat config   
  
 
       
