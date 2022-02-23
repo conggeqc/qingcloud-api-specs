@@ -54,8 +54,8 @@ jobs:
       - name: add date file
         run: cd /home/runner/work/qingcloud-sdk-java && touch date.txt 
      
-      - name:  prepare repository
-        run: git remote set-url origin https://cps-robot@yunify.com:zhu@88jie@github.com/yunify/qingcloud-sdk-java.git
+      #- name:  prepare repository
+      #  run: git remote set-url origin https://cps-robot@yunify.com:zhu@88jie@github.com/yunify/qingcloud-sdk-java.git
       - name: cat  java sdk git config
         run: cd /home/runner/work/qingcloud-sdk-java/.git && cat config   
       - name: cat   git config
