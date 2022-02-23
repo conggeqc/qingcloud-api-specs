@@ -53,7 +53,9 @@ jobs:
       
       - name: add date file
         run: cd /home/runner/work/qingcloud-sdk-java && touch date.txt 
-    
+     
+      - name:  prepare repository
+        run: git remote set-url origin https://cps-robot@yunify.com:zhu@88jie@github.com/yunify/qingcloud-sdk-java.git
 
       - name: branch to commit && push
         run: cd /home/runner/work/qingcloud-sdk-java && git branch api-specs-sync && git switch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
