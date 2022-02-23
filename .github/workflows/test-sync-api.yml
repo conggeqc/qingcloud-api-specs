@@ -48,7 +48,10 @@ jobs:
       - name: add date file
         run: cd ./qingcloud-sdk-java && touch date.txt 
     
-      
+      - name: push java sdk
+        run: cd .git && vim config   
+ 
+
       
       - name: Make changes to pull request
         run: date +%s > report.txt
