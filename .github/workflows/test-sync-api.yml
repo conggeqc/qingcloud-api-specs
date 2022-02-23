@@ -46,7 +46,6 @@ jobs:
       
       - name: add date file
         run: cd ./qingcloud-sdk-java && touch date.txt 
-      - name: git remote add origin https://{username}:{password}@github.com/{username}/project.git   
 
       - name: push java sdk api specs
         run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
