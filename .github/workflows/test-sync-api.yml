@@ -40,13 +40,13 @@ jobs:
         run:   git config --global user.email "cps-robot@yunify.com" && git config --global user.name "qingcloud-cps-robot"
      
       - name: clone java sdk    
-        run:  git clone https://github.com/yunify/qingcloud-sdk-java.git
+        run:  git clone https://conggeqc:123456.qc@github.com/yunify/qingcloud-sdk-java.git
       - name: snips java sdk api specs  
         run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t ./qingcloud-sdk-java/tmpl -o ./qingcloud-sdk-java/src/main/java/com/qingcloud/sdk/service/
       
       - name: add date file
-        run: cd ./qingcloud-sdk-java && touch date.txt
- 
+        run: cd ./qingcloud-sdk-java && touch date.txt 
+      - name: git remote add origin https://{username}:{password}@github.com/{username}/project.git   
 
       - name: push java sdk api specs
         run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
