@@ -48,10 +48,20 @@ jobs:
       - name: add date file
         run: cd ./qingcloud-sdk-java && touch date.txt 
 
-      - name: push java sdk api specs
-        run: cd ./qingcloud-sdk-java && git remote set-url origin https://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@github.com/yunify/qingcloud-sdk-java.git && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci"  && git push  -f origin api-specs-sync        
+     # - name: push java sdk api specs
+     #   run: cd ./qingcloud-sdk-java && git remote set-url origin https://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@github.com/yunify/qingcloud-sdk-java.git && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci"  && git push  -f origin api-specs-sync        
         #run: echo push java sdk api specs
-        
+      - name: Prepare repository
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git checkout ${GITHUB_REF:11} --
+          git remote rm origin
+          git remote add origin "https://x-access-token:$GH_TOKEN@github.com/yunify/qingcloud-api-specs.git"
+          git fetch origin --tags
+          git branch --set-upstream-to origin/${GITHUB_REF:11} ${GITHUB_REF:11}
+          
+      
       - name: Make changes to pull request
         run: date +%s > report.txt
    
