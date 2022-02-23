@@ -44,7 +44,7 @@ jobs:
         run: cd ~ && git clone https://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@github.com/yunify/qingcloud-sdk-java.git
       
       - name: ls 
-        run: ls /home/runner/work/qingcloud-api-specs/qingcloud-sdk-java
+        run: ls /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/qingcloud-sdk-java
       
       - name: pwd
         run: pwd
