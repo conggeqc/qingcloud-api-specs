@@ -48,7 +48,7 @@ jobs:
         run: cd ./qingcloud-sdk-java && touch date.txt 
 
       - name: push java sdk api specs
-        run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
+        run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push https://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@github.com/yunify/qingcloud-sdk-java.git --set-upstream origin api-specs-sync
         #run: echo push java sdk api specs
         
       - name: Make changes to pull request
