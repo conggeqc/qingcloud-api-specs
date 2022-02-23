@@ -37,8 +37,8 @@ jobs:
         run: cp snips /usr/local/bin/snips
       
       - name: git account identity
-        #run:   git config --global user.email "cps-robot@yunify.com" && git config --global user.name "qingcloud-cps-robot"
-        run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
+        run:   git config --global user.email "cps-robot@yunify.com" && git config --global user.name "qingcloud-cps-robot"
+        #run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
 
       - name: clone java sdk    
         run:  git clone https://github.com/yunify/qingcloud-sdk-java.git
