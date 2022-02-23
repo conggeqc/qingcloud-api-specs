@@ -50,11 +50,9 @@ jobs:
       - name: snips java sdk api specs  
         run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t /home/runner/work/qingcloud-sdk-java/tmpl -o /home/runner/work/qingcloud-sdk-java/src/main/java/com/qingcloud/sdk/service/
       
-      - name: pwd
-        run: pwd
       
       - name: add date file
-        run: cd ./qingcloud-sdk-java && touch date.txt 
+        run: cd /home/runner/work/qingcloud-sdk-java && touch date.txt 
     
       - name: cat  java sdk git config
         run: cd .git && cat config   
@@ -70,13 +68,10 @@ jobs:
      
       - name: cat  java sdk git config
         run: cd .git && cat config   
-        
-      - name: pwd
-        run: cd  ./qingcloud-sdk-java && pwd
-     
+    
 
       - name: branch to commit && push
-        run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
+        run: cd /home/runner/work/qingcloud-sdk-java && git branch api-specs-sync && git switch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
 
       - name: Make changes to pull request
         run: date +%s > report.txt
@@ -90,7 +85,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches
+          branch: branch api-specs-sync
           delete-branch: true
           title: '[Example] Update report'
           body: |
