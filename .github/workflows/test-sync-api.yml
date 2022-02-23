@@ -48,19 +48,22 @@ jobs:
       - name: add date file
         run: cd ./qingcloud-sdk-java && touch date.txt 
     
-      - name: push java sdk
+      - name: cat  java sdk git config
         run: cd .git && cat config   
         
       - name: add java origin
         run: git remote rm origin 
-        # && git remote set-url origin https://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@github.com/yunify/qingcloud-sdk-java.git 
+  
+      - name: cat  java sdk git config
+        run: cd .git && cat config   
 
       - name: push java sdk
-        run: cd .git && cat config   
-      
+        run:  git remote add  origin https://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@github.com/yunify/qingcloud-sdk-java.git 
+
+
       - name: Make changes to pull request
         run: date +%s > report.txt
-   
+
       - name: java Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
