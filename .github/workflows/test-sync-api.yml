@@ -41,7 +41,7 @@ jobs:
         run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
 
       - name: clone java sdk    
-        run:  git clone https://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@github.com/yunify/qingcloud-sdk-java.git
+        run:  git clone https://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@github.com/yunify/qingcloud-sdk-java.git
       - name: snips java sdk api specs  
         run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t ./qingcloud-sdk-java/tmpl -o ./qingcloud-sdk-java/src/main/java/com/qingcloud/sdk/service/
       
@@ -49,7 +49,7 @@ jobs:
         run: cd ./qingcloud-sdk-java && touch date.txt 
 
       - name: push java sdk api specs
-        run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git remote set-url origin https://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@github.com/conggeqc/qingcloud-sdk-java.git && git push  -u origin api-specs-sync
+        run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git remote set-url origin https://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@github.com/conggeqc/qingcloud-sdk-java.git && git push  -u origin api-specs-sync
         #run: echo push java sdk api specs
         
       - name: Make changes to pull request
