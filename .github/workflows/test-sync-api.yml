@@ -70,7 +70,7 @@ jobs:
   
       - name: upload branch 
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+          GITHUB_TOKEN: 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
         run: |
           sudo rm -rf pve-kernel PVE tmp.txt .git*
           git init
