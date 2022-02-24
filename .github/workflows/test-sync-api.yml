@@ -70,10 +70,11 @@ jobs:
   
       - name: upload branch 
         env:
-          #robot
+          #robot  
           #GITHUB_TOKEN: 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
-          #congge
-          GITHUB_TOKEN: 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
+          #congge  
+          #GITHUB_TOKEN: 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
+          GITHUB_TOKEN: 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
 
         run: |
           sudo rm -rf pve-kernel PVE tmp.txt .git*
@@ -82,7 +83,7 @@ jobs:
           git config user.email "cps-robot@yunify.com"          
           git add .
           git commit -m "Update api-specs-sync from project qingcloud-api-specs ci "
-          git push --force --quiet https://$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@github.com/conggeqc/test.git HEAD:api-specs-sync
+          git push --force --quiet https://$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@github.com/conggeqc/test.git HEAD:api-specs-sync
       
       - name: Make changes to pull request
         run: date +%s > report.txt
