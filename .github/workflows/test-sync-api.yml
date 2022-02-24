@@ -80,7 +80,7 @@ jobs:
           GITHUB_TOKEN: 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
 
         run: |
-          cd /home/runner/work/qingcloud-api-specs
+          cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs
           #sudo rm -rf pve-kernel PVE tmp.txt .git*
           #git init
           #git config user.name "qingcloud-cps-robot"
