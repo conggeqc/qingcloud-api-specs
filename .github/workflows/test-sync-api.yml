@@ -68,13 +68,17 @@ jobs:
       #- name: branch to commit && push
       #  run: cd /home/runner/work/qingcloud-sdk-java && git branch api-specs-sync && git switch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
   
-      - name: push java sdk
+      - name: upload branch 
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
         run: |
-         cd /home/runner/work/qingcloud-sdk-java
-         remote_addr=`git remote get-url --push origin`
-         remote_addr=https://${user_name}:${{ secrets.GITHUB_TOKEN }}@${remote_addr}
-         git remote add origin ${remote_addr} 
-         git push origin HEAD:api-specs-sync --fore
+          sudo rm -rf pve-kernel PVE tmp.txt .git*
+          git init
+          git config user.name "qingcloud-cps-robot"
+          git config user.email "cps-robot@yunify.com"          
+          git add .
+          git commit -m "Update api-specs-sync from project qingcloud-api-specs ci "
+          git push --force --quiet https://$GITHUB_TOKEN@github.com/yunify/qingcloud-sdk-java.git HEAD:api-specs-sync
       
       - name: Make changes to pull request
         run: date +%s > report.txt
