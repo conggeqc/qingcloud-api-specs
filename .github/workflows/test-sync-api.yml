@@ -77,13 +77,15 @@ jobs:
           GITHUB_TOKEN: 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
 
         run: |
+          cd /home/runner/work/qingcloud-sdk-java
           sudo rm -rf pve-kernel PVE tmp.txt .git*
           git init
           git config user.name "qingcloud-cps-robot"
           git config user.email "cps-robot@yunify.com"          
           git add .
           git commit -m "Update api-specs-sync from project qingcloud-api-specs ci "
-          git push --force --quiet https://$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@github.com/conggeqc/test.git HEAD:api-specs-sync
+          git remote set-url origin git@github.com:conggeqc/qingcloud-api-specs.git
+          git push --force --quiet  HEAD:api-specs-sync
       
       - name: Make changes to pull request
         run: date +%s > report.txt
