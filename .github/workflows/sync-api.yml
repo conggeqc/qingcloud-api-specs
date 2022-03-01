@@ -29,7 +29,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       
       - name: ls
-        run: cd $GITHUB_WORKSPACE
+        run: ls $GITHUB_WORKSPACE
         
       - name: download snips
         run: wget https://github.com/qingstor/snips/releases/download/v0.3.6/snips-v0.3.6-linux_amd64.tar.gz
