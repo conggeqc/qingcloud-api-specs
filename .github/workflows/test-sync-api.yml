@@ -72,7 +72,7 @@ jobs:
             git status
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
       - name: commit java sdk
-        run: git push "https://conggeqc:$API_TOKEN_GITHUB@$github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
+        run: git push "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
 
  
       - name: upload pull request branch 
