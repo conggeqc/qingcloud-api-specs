@@ -56,8 +56,6 @@ jobs:
       
       - name: add date file
         run: |
-         #cd /home/runner/work/qingcloud-sdk-java && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
-         #cd /home/runner/work/qingcloud-api-specs && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
          cd /home/runner/work/qingcloud-sdk-java && date +%s > report.txt
          cd /home/runner/work/qingcloud-api-specs && date +%s > report.txt
     
@@ -65,7 +63,7 @@ jobs:
          
       - name: cat  java sdk git config
         run: cd /home/runner/work/qingcloud-sdk-java/.git && cat config   
-      - name: cat   git config
+      - name: cat  git config
         run: cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config    
 
   
@@ -77,6 +75,7 @@ jobs:
             #COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
             #COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
             #COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
+            
             cd /home/runner/work/qingcloud-sdk-java/
             git remote -v
             git add .
