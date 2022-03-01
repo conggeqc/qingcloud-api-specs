@@ -58,8 +58,9 @@ jobs:
         run: |
          #cd /home/runner/work/qingcloud-sdk-java && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
          #cd /home/runner/work/qingcloud-api-specs && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
-         cd /home/runner/work/qingcloud-sdk-java && touch date.txt
-         cd /home/runner/work/qingcloud-api-specs && touch date.txt
+         cd /home/runner/work/qingcloud-sdk-java && date +%s > report.txt
+         cd /home/runner/work/qingcloud-api-specs && date +%s > report.txt
+    
 
          
       - name: cat  java sdk git config
@@ -67,6 +68,8 @@ jobs:
       - name: cat   git config
         run: cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config    
 
+  
+    
 
       - name: prepare java sdk  commit
         run: |
@@ -82,45 +85,18 @@ jobs:
             #git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
       - name: commit java sdk
         #run: git push "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
-        run: git push origin master
+        run: git push origin api-specs-sync
  
-      - name: upload pull request branch 
-        #env:
-          #robot  
-          #GITHUB_TOKEN: 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
-          #congge  
-          #GITHUB_TOKEN: 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
-          #GITHUB_TOKEN: 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
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        
-        run: |
-          #cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs
-           cd /home/runner/work/qingcloud-sdk-java
-
-          #sudo rm -rf pve-kernel PVE tmp.txt .git*
-          #git init
-          #git config user.name "qingcloud-cps-robot"
-          #git config user.email "cps-robot@yunify.com"          
-          git add .
-          git commit -m "Update api-specs-sync from project qingcloud-api-specs ci "
-          #git remote set-url origin git@github.com:conggeqc/qingcloud-api-specs.git
-          #git remote set-url origin git@github.com:yunify/qingcloud-sdk-java.git
-          git push --force --quiet  HEAD:api-specs-sync
-      
-      - name: Make changes to pull request
-        run: date +%s > report.txt
-
       - name: java Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.API_TOKEN_GITHUB }}
           commit-message: Update report
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: branch api-specs-sync
+          branch: api-specs-sync
           delete-branch: true
           title: '[Example] Update report'
           body: |
@@ -139,7 +115,6 @@ jobs:
             maintainers
           milestone: 1
           draft: false
-        
         
      
       - name:  clone go sdk
