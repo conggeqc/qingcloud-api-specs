@@ -86,7 +86,8 @@ jobs:
             git add .
             git status
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
-            #git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
+            git remote rm origin 
+            git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
             git push origin api-specs-sync
       
       - name: cat git config
