@@ -65,11 +65,11 @@ jobs:
             mkdir $TEMP_DIR/qingcloud-api-specs
             mv "/home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git" "$TEMP_DIR/qingcloud-api-specs/.git"
          
-      - name: cat  java sdk git config
-        run: cd /home/runner/work/qingcloud-sdk-java/.git && cat config   
-      - name: cat  api-specs git config
-        run: cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config    
-
+      - name: cat git config
+        run: |
+              cd /home/runner/work/qingcloud-sdk-java/.git && cat config 
+              #cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config 
+    
   
 
       - name: prepare java sdk  commit
