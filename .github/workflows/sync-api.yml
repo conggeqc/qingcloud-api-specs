@@ -56,9 +56,12 @@ jobs:
       
       - name: add date file
         run: |
-         cd /home/runner/work/qingcloud-sdk-java && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
-         cd /home/runner/work/qingcloud-api-specs && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
+         #cd /home/runner/work/qingcloud-sdk-java && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
+         #cd /home/runner/work/qingcloud-api-specs && touch date.txt_$cur_dateTime && git add date.txt_$cur_dateTime
+         cd /home/runner/work/qingcloud-sdk-java && touch date.txt
+         cd /home/runner/work/qingcloud-api-specs && touch date.txt
 
+         
       - name: cat  java sdk git config
         run: cd /home/runner/work/qingcloud-sdk-java/.git && cat config   
       - name: cat   git config
