@@ -72,7 +72,7 @@ jobs:
     
   
 
-      - name: prepare java sdk  commit
+      - name: prepare java sdk  commit && commit
         run: |
             #ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
             #COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
@@ -81,15 +81,22 @@ jobs:
             
             cd /home/runner/work/qingcloud-sdk-java/
             echo git init
-            git init
+            #git init
             git remote -v
             git add .
             git status
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
             #git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
-      - name: commit java sdk
+            git push origin api-specs-sync
+      
+      - name: cat git config
+        run: |
+              cd /home/runner/work/qingcloud-sdk-java/.git && cat config 
+              #cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config 
+    
+      #- name: commit java sdk
         #run: git push "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
-        run: cd /home/runner/work/qingcloud-sdk-java/ && git push origin api-specs-sync
+       # run: cd /home/runner/work/qingcloud-sdk-java/ && git push origin api-specs-sync
  
       - name: java Create Pull Request
         id: cpr
