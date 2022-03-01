@@ -41,7 +41,7 @@ jobs:
         run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
 
       - name: clone java sdk    
-        run: cd  /home/runner/work/ && git clone https://$USER_NAME:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
+        run: cd  /home/runner/work/ && git clone https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
       
       - name: ls 
         run: ls /home/runner/work/qingcloud-sdk-java
@@ -72,7 +72,7 @@ jobs:
             git status
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
       - name: commit java sdk
-        run: git push "https://$USER_NAME:$API_TOKEN_GITHUB@$github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
+        run: git push "https://conggeqc:$API_TOKEN_GITHUB@$github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
 
  
       - name: upload pull request branch 
