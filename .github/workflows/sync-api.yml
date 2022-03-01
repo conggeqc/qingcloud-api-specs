@@ -80,11 +80,12 @@ jobs:
             #COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
             
             cd /home/runner/work/qingcloud-sdk-java/
+            git init
             git remote -v
             git add .
             git status
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
-            #git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
+            git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
       - name: commit java sdk
         #run: git push "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
         run: git push origin api-specs-sync
