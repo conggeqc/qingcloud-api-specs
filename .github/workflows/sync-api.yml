@@ -80,6 +80,7 @@ jobs:
             #COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
             
             cd /home/runner/work/qingcloud-sdk-java/
+            echo git init
             git init
             git remote -v
             git add .
