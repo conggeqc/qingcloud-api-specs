@@ -64,13 +64,13 @@ jobs:
 
       - name: prepare commit
         run: |
-            ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
-            COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
-            COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
-            COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
+            #ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
+            #COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
+            #COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
+            #COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
             git add .
             git status
-            git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
+            git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
       - name: commit java sdk
         run: git push "https://$USER_NAME:$API_TOKEN_GITHUB@$github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
 
