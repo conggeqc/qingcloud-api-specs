@@ -68,12 +68,13 @@ jobs:
         run: cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config    
 
 
-      - name: prepare commit
+      - name: prepare java sdk  commit
         run: |
             #ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
             #COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
             #COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
             #COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
+            cd /home/runner/work/qingcloud-sdk-java/
             git add .
             git status
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
