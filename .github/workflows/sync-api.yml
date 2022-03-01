@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: test-sync-api
+name: sync-api
 
 # Controls when the workflow will run
 on:
@@ -25,6 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      
       - name: ls
         run: cd $GITHUB_WORKSPACE
         
