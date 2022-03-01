@@ -59,15 +59,18 @@ jobs:
          cd /home/runner/work/qingcloud-sdk-java && date +%s > report.txt
          cd /home/runner/work/qingcloud-api-specs && date +%s > report.txt
     
-
+      - name : update current api-specs git config
+        run: | 
+            TEMP_DIR=$(mktemp -d)
+            mkdir TEMP_DIR/qingcloud-api-specs
+            mv "/home/runner/work/qingcloud-api-specs/.git" "$TEMP_DIR/qingcloud-api-specs/.git"
          
       - name: cat  java sdk git config
         run: cd /home/runner/work/qingcloud-sdk-java/.git && cat config   
-      - name: cat  git config
+      - name: cat  api-specs git config
         run: cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config    
 
   
-    
 
       - name: prepare java sdk  commit
         run: |
