@@ -62,7 +62,7 @@ jobs:
       - name : update current api-specs git config
         run: | 
             TEMP_DIR=$(mktemp -d)
-            mkdir TEMP_DIR/qingcloud-api-specs
+            mkdir $TEMP_DIR/qingcloud-api-specs
             mv "/home/runner/work/qingcloud-api-specs/.git" "$TEMP_DIR/qingcloud-api-specs/.git"
          
       - name: cat  java sdk git config
