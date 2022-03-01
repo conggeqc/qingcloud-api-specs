@@ -41,7 +41,7 @@ jobs:
         run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
 
       - name: clone java sdk    
-        run: cd  /home/runner/work/ && git clone https://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@github.com/yunify/qingcloud-sdk-java.git
+        run: cd  /home/runner/work/ && git clone https://$USER_NAME:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
       
       - name: ls 
         run: ls /home/runner/work/qingcloud-sdk-java
@@ -55,12 +55,6 @@ jobs:
         run: |
          cd /home/runner/work/qingcloud-sdk-java && touch date.txt 
          cd /home/runner/work/qingcloud-api-specs && touch date.txt 
-     
-      #- name: update config
-        #run: cd /home/runner/work/qingcloud-sdk-java/ && git remote set-url origin https://qingcloud-cps-robot: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@github.com/yunify/qingcloud-sdk-java.git
-        #run: cd /home/runner/work/qingcloud-sdk-java/ && git remote set-url origin git@github.com:yunify/qingcloud-sdk-java.git
-       
-      #  run: cd /home/runner/work/qingcloud-sdk-java/ && git remote rm origin 
 
       - name: cat  java sdk git config
         run: cd /home/runner/work/qingcloud-sdk-java/.git && cat config   
@@ -68,10 +62,19 @@ jobs:
         run: cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config    
 
 
-      #- name: branch to commit && push
-      #  run: cd /home/runner/work/qingcloud-sdk-java && git branch api-specs-sync && git switch api-specs-sync && git add -A && git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
-  
-      - name: upload branch 
+      - name: prepare commit
+        run: |
+            ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
+            COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
+            COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
+            git add .
+            git status
+            git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
+      - name: commit java sdk
+        run: git push "https://$USER_NAME:$API_TOKEN_GITHUB@$github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
+
+ 
+      - name: upload pull request branch 
         #env:
           #robot  
           #GITHUB_TOKEN: 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
