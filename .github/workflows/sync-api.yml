@@ -77,7 +77,7 @@ jobs:
             git add .
             git status
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
-            git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
+            #git remote add origin https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
       - name: commit java sdk
         #run: git push "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
         run: git push origin master
@@ -103,7 +103,7 @@ jobs:
           git add .
           git commit -m "Update api-specs-sync from project qingcloud-api-specs ci "
           #git remote set-url origin git@github.com:conggeqc/qingcloud-api-specs.git
-          git remote set-url origin git@github.com:yunify/qingcloud-sdk-java.git
+          #git remote set-url origin git@github.com:yunify/qingcloud-sdk-java.git
           git push --force --quiet  HEAD:api-specs-sync
       
       - name: Make changes to pull request
