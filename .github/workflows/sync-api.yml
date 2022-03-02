@@ -74,6 +74,8 @@ jobs:
   
 
       - name: prepare java sdk  commit && commit
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
             #ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
             #COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
@@ -93,8 +95,12 @@ jobs:
             #git remote rm origin 
             #git remote add origin https://conggeqc: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@github.com/conggeqc/qingcloud-sdk-java.git
             #git remote set-url origin https://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@github.com/congeqc/qingcloud-sdk-java.git
-            git remote set-url origin "https://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@github.com/congeqc/qingcloud-sdk-java.git"
-            git config remote.origin.url "https://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@github.com/congeqc/qingcloud-sdk-java.git"
+            #git remote set-url origin "https://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@github.com/congeqc/qingcloud-sdk-java.git"
+            #git config remote.origin.url "https://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@github.com/congeqc/qingcloud-sdk-java.git"
+
+            git remote set-url origin "https://$env:API_TOKEN_GITHUB@github.com/congeqc/qingcloud-sdk-java.git"
+            git config remote.origin.url "https://$env:API_TOKEN_GITHUB@github.com/congeqc/qingcloud-sdk-java.git"
+
             git push origin api-specs-sync
       
       - name: cat git config
