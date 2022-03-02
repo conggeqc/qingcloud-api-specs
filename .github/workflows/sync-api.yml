@@ -60,11 +60,11 @@ jobs:
          cd /home/runner/work/qingcloud-sdk-java && date +%s > report.txt
          cd /home/runner/work/qingcloud-api-specs && date +%s > report.txt
     
-      - name : update current api-specs git config
-        run: | 
-            TEMP_DIR=$(mktemp -d)
-            mkdir $TEMP_DIR/qingcloud-api-specs
-            mv "/home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git" "$TEMP_DIR/qingcloud-api-specs/.git"
+      #- name : update current api-specs git config
+      #  run: | 
+      #      TEMP_DIR=$(mktemp -d)
+      #      mkdir $TEMP_DIR/qingcloud-api-specs
+      #      mv "/home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git" "$TEMP_DIR/qingcloud-api-specs/.git"
          
       - name: cat git config
         run: |
@@ -113,8 +113,6 @@ jobs:
           cd /home/runner/work/qingcloud-sdk-java
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
-       
-            
         with:
           commit-message: update authors
           title: Update AUTHORS
