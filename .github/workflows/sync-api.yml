@@ -114,9 +114,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: update authors
-          title: Update AUTHORS
-          body: Credit new contributors by updating AUTHORS
+          commit-message: create Pull requests by robot
+          title: pr by robot
+          body: create Pull requests from branch api-specs-sync by robot
           branch: api-specs-sync
           
       - name:  clone go sdk
