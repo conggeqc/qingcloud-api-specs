@@ -121,7 +121,7 @@ jobs:
       - name:  clone go sdk
         run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-go.git
       - name: snips go sdk api specs
-        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t /home/runner/work/qingcloud-sdk-go/template -o /home/runner/work/qingcloud-sdk-go/service/      - name: push go sdk api specs
+        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t /home/runner/work/qingcloud-sdk-go/template -o /home/runner/work/qingcloud-sdk-go/service/   
       - name: prepare go sdk && commit
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -144,7 +144,7 @@ jobs:
       - name: clone ruby sdk
         run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-ruby.git
       - name: snips ruby sdk api specs
-        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t /home/runner/work/qingcloud-sdk-ruby/template -o /home/runner/work/qingcloud-sdk-ruby/lib/qingcloud/sdk/service/      - name: push ruby sdk api specs
+        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t /home/runner/work/qingcloud-sdk-ruby/template -o /home/runner/work/qingcloud-sdk-ruby/lib/qingcloud/sdk/service/    
         #run: cd ./qingcloud-sdk-java && git branch api-specs-sync &&  git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
       - name: prepare ruby sdk && commit
         env:
