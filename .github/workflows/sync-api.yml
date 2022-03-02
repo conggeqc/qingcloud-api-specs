@@ -76,7 +76,7 @@ jobs:
     
   
 
-      - name: prepare java sdk  commit && commit
+      - name: prepare java sdk && commit
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
@@ -106,36 +106,60 @@ jobs:
         run: |
               cd /home/runner/work/qingcloud-sdk-java/.git && cat config 
               #cd /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/.git && cat config 
-    
-      #- name: commit java sdk
-        #run: git push "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
-       # run: cd /home/runner/work/qingcloud-sdk-java/ && git push origin api-specs-sync
  
-      - name: cd  java path
-        run: |
-          cd /home/runner/work/qingcloud-sdk-java
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: create Pull requests by robot
-          title: pr by robot
-          body: create Pull requests from branch api-specs-sync by robot
-          branch: api-specs-sync
+
+     # - name: Create Pull Request
+     #   uses: peter-evans/create-pull-request@v3
+     #   with:
+     #     commit-message: create Pull requests by robot
+     #     title: pr by robot
+     #     body: create Pull requests from branch api-specs-sync by robot
+     #     branch: api-specs-sync
+     #     base: master
           
       - name:  clone go sdk
-        run: git clone https://github.com/yunify/qingcloud-sdk-go.git
+        run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-go.git
       - name: snips go sdk api specs
-        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t ./qingcloud-sdk-go/template -o ./qingcloud-sdk-go/service/
-      - name: push go sdk api specs
-        #run: cd ./qingcloud-sdk-java && git branch api-specs-sync && git checkout api-specs-sync &&  git commit -m "from project qingcloud-api-specs ci" && git push  --set-upstream origin api-specs-sync
-        run: echo push go sdk api specs 
+        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t /home/runner/work/qingcloud-sdk-go/template -o /home/runner/work/qingcloud-sdk-go/service/   
+      - name: prepare go sdk && commit
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
+            #ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
+            #COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
+            #COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
+            #COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
+            
+            cd /home/runner/work/qingcloud-sdk-go
+            git remote -v
+            git add .
+            git status
+            git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
+            git remote set-url origin "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-go.git"
+            git config remote.origin.url "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-go.git"
+            git push origin api-specs-sync
 
      
       - name: clone ruby sdk
-        run:  git clone https://github.com/yunify/qingcloud-sdk-ruby.git
+        run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-ruby.git
       - name: snips ruby sdk api specs
-        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t ./qingcloud-sdk-ruby/template -o ./qingcloud-sdk-ruby/lib/qingcloud/sdk/service/
-      - name: push ruby sdk api specs
+        run: snips -f /home/runner/work/qingcloud-api-specs/qingcloud-api-specs/2013-08-30/swagger/api_v2.0.json -t /home/runner/work/qingcloud-sdk-ruby/template -o /home/runner/work/qingcloud-sdk-ruby/lib/qingcloud/sdk/service/    
         #run: cd ./qingcloud-sdk-java && git branch api-specs-sync &&  git commit -m "from project qingcloud-api-specs ci" && git push --set-upstream origin api-specs-sync
-        run: echo push ruby sdk api specs 
+      - name: prepare ruby sdk && commit
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
+            #ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
+            #COMMIT_MESSAGE=See ORIGIN_COMMIT from $GITHUB_REF
+            #COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
+            #COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
+            
+            cd /home/runner/work/qingcloud-sdk-ruby
+            git remote -v
+            git add .
+            git status
+            git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
+            git remote set-url origin "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-ruby.git"
+            git config remote.origin.url "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-ruby.git"
+            git push origin api-specs-sync
    
