@@ -41,7 +41,10 @@ jobs:
       
       - name: git account identity
         #run:   git config --global user.email "cps-robot@yunify.com" && git config --global user.name "qingcloud-cps-robot"
-        run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
+        #run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
+        run: |
+            git config --global user.name  "conggeqc"
+            git config --global user.email  "conggeqc@gmail.com"
 
       - name: clone java sdk    
         #run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
@@ -84,8 +87,8 @@ jobs:
             
             cd /home/runner/work/qingcloud-sdk-java
             #git init
-            git config --global user.name  "conggeqc"
-            git config --global user.email  "conggeqc@gmail.com"
+            #git config --global user.name  "conggeqc"
+            #git config --global user.email  "conggeqc@gmail.com"
             git remote -v
             git add .
             git status
