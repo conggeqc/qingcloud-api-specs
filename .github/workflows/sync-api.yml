@@ -108,12 +108,19 @@ jobs:
         #run: git push "https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git" --set-upstream api-specs-sync
        # run: cd /home/runner/work/qingcloud-sdk-java/ && git push origin api-specs-sync
  
-      - name: java Create Pull Request
-        id: cpr
+      - name: cd  java path
+        run: |
+          cd /home/runner/work/qingcloud-sdk-java
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+       
+            
         with:
+          commit-message: update authors
+          title: Update AUTHORS
+          body: Credit new contributors by updating AUTHORS
           branch: api-specs-sync
-        
+          
       - name:  clone go sdk
         run: git clone https://github.com/yunify/qingcloud-sdk-go.git
       - name: snips go sdk api specs
