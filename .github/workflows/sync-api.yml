@@ -90,6 +90,7 @@ jobs:
             git diff-index --quiet HEAD || git commit --message "See ORIGIN_COMMIT from $GITHUB_REF"
             #git remote rm origin 
             #git remote add origin https://conggeqc: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@github.com/conggeqc/qingcloud-sdk-java.git
+            git remote set-url origin https://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@github.com/congeqc/qingcloud-sdk-java.git
             git push origin api-specs-sync
       
       - name: cat git config
