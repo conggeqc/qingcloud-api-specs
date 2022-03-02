@@ -97,7 +97,8 @@ jobs:
             #git remote set-url origin https://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@github.com/congeqc/qingcloud-sdk-java.git
             #git remote set-url origin "https://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@github.com/congeqc/qingcloud-sdk-java.git"
             #git config remote.origin.url "https://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@github.com/congeqc/qingcloud-sdk-java.git"
-
+            git credential-manager uninstall
+            git credential-manager install 
             git remote set-url origin "https://$env:API_TOKEN_GITHUB@github.com/congeqc/qingcloud-sdk-java.git"
             git config remote.origin.url "https://$env:API_TOKEN_GITHUB@github.com/congeqc/qingcloud-sdk-java.git"
 
