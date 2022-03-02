@@ -44,8 +44,9 @@ jobs:
         run:   git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
 
       - name: clone java sdk    
-        run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
-      
+        #run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://conggeqc:$API_TOKEN_GITHUB@github.com/conggeqc/qingcloud-sdk-java.git
+        run: cd  /home/runner/work/ && git clone --single-branch --branch api-specs-sync https://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@github.com/conggeqc/qingcloud-sdk-java.git
+
       - name: ls 
         run: ls /home/runner/work/qingcloud-sdk-java
         
