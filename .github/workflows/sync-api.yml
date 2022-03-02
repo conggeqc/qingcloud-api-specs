@@ -82,7 +82,8 @@ jobs:
             cd /home/runner/work/qingcloud-sdk-java/
             #echo git init
             #git init
-            git config --global user.email "306085175@qq.com" && git config --global user.name "conggeqc"
+            git config --global user.name  "conggeqc"
+            git config --global user.email  "conggeqc@gmail.com"
             git remote -v
             git add .
             git status
